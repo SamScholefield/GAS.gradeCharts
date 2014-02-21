@@ -44,11 +44,10 @@ case '2b': var numeric = 2;
            break;
 case '2c': var numeric = 1;
            break;
-
-
-case 'new': break;
-
-case '': break;
+case 'new': var numeric = 0;
+           break;
+case '': var numeric = 0;
+         break;
 
 default: var numeric = 0;
 }
@@ -80,10 +79,10 @@ case 'G': var numeric = 2;
            break;
 case 'U': var numeric = 1;
            break;
-
-case 'new': break;
-
-case '': break;
+case 'new': var numeric = 0;
+           break;
+case '': var numeric = 0;
+         break;
 
 default: var numeric = 0;
 }
@@ -97,24 +96,24 @@ default: var numeric = 0;
 function returnAsNumericIB(grade)
 {
 switch(grade){
-case 1: var numeric = 7;
+case 7: var numeric = 7;
            break;
-case 2: var numeric = 6;
+case 6: var numeric = 6;
            break;
-case 3: var numeric = 5;
+case 5: var numeric = 5;
            break;           
 case 4: var numeric = 4;
            break;
-case 5: var numeric = 3;
+case 3: var numeric = 3;
            break;
-case 6: var numeric = 2;
+case 2: var numeric = 2;
            break;
-case 7: var numeric = 1;
+case 1: var numeric = 1;
            break;
-
-case 'new': break;
-
-case '': break;
+case 'new': var numeric = 0;
+           break;
+case '': var numeric = 0;
+         break;
 
 default: var numeric = 0;
 }

@@ -1,4 +1,4 @@
- function chartTwo(ss, user, userFirstName, userLastName, userYear){
+ function chartTwo(ss, user, userYear){
    
    var lookupString = userYear + "Lookup";
    var dataSheet = ss.getSheetByName(userYear);
@@ -12,7 +12,9 @@
    for(var i = 0; i < studentObjects.length; i++){
    
      if(studentObjects[i].studentEmail == user){
-   
+       var form = studentObjects[i].tutorGroup;
+       var userFirstName = studentObjects[i].firstName;
+       var userLastName = studentObjects[i].familyName;
        var sampleData = Charts.newDataTable()
          .addColumn(Charts.ColumnType.STRING, "Term")
          .addColumn(Charts.ColumnType.NUMBER, "Target")
@@ -38,7 +40,7 @@
    var seriesTwoColor = '#c1d82f';
    
    var chart = Charts.newColumnChart()
-     .setTitle(userFirstName + " " + userLastName + '\n English grades')
+     .setTitle(userFirstName + " " + userLastName + " - " + form + '\n English grades')
      .setXAxisTitle('Term')
      .setYAxisTitle('Grade')
      .setDimensions(700, 700)

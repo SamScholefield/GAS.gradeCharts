@@ -8,18 +8,14 @@ function doGet(e) {
   var studentLookup = ss.getRangeByName("studentLookup");  
   var studentObjects = getRowsData(nameSheet, studentLookup);
   var user = Session.getActiveUser().getEmail();
-  var userFirstName = "";
-  var userLastName = "";
   var userYear = "";
   var warningState = true;
-  var warning = "Your email address has not been recognised";
+  var warning = "Your email address has not been recognised. Please contact your English teacher";
   
   //identify user and set variables
   for(var i = 0; i < studentObjects.length; i++){
     
     if(studentObjects[i].email == user){
-      userFirstName = studentObjects[i].firstname;
-      userLastName = studentObjects[i].lastname;
       userYear = studentObjects[i].year;
       warningState = false;
     }
@@ -27,20 +23,16 @@ function doGet(e) {
   
   //create warning message if not found
   if(warningState == true){    
-    var label = app.createLabel('warning label');   
+    var label = app.createLabel(warning);   
     panel.add(label);
     app.add(panel)
     return app;    
   }
-
-Logger.log(userYear);
-Logger.log(typeof userYear);
-
   
   //main chart
   if(userYear == 'Yr7' || userYear == 'Yr8' || userYear == 'Yr9'){
     
-    var chart = chartOne(ss, user, userFirstName, userLastName, userYear);
+    var chart = chartOne(ss, user, userYear);
     Logger.log("one")
     panel.add(chart, 0, 0);
     app.add(panel)
@@ -48,7 +40,7 @@ Logger.log(typeof userYear);
     
   }else if(userYear == 'Yr10' || userYear == 'Yr11'){
   
-    var chart = chartTwo(ss, user, userFirstName, userLastName, userYear);
+    var chart = chartTwo(ss, user, userYear);
     Logger.log("two");
     panel.add(chart, 0, 0);
     app.add(panel)
@@ -56,7 +48,7 @@ Logger.log(typeof userYear);
     
   }else{
   
-    var chart = chartThree(ss, user, userFirstName, userLastName, userYear);
+    var chart = chartThree(ss, user, userYear);
     Logger.log("three");
     panel.add(chart, 0, 0);
     app.add(panel)
